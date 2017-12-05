@@ -1,0 +1,61 @@
+<html>
+	<body>
+		<h2>请选择学院</h2>
+			<select id = "colleges-list" onchange = "collegeChange()">
+		
+			</select>
+		
+		<h2>请选择科系</h2>
+			<select id = "depts-list">
+			
+			</select>
+		<p id = "demo"> </p>
+	
+		<script>
+			var colleges = ["商学院","工学院","资电学院","金融学院"];
+			var business_depts = ["会计系","统计学系","经济学系","行销学系"];
+			var engineer_depts = ["化学工程学系","精密系","工工系","机械与电脑"];
+			var information_depts = ["资讯工程学系","电机工程学系","电子工程学系"];
+			var finance_dapts = ["风险管理","财务金融学系"];
+			var collegeElm = document.getElementById("colleges-list");
+			var deptElm = document.getElementById("depts-list");
+			
+		
+			var options = "";
+			for (var i = 0; i < colleges.length; i++){
+				options = options + '<option value="'+i+'">' + colleges[i] + '</option>';
+			}
+			collegeElm.innerHTML = options;
+			
+			populate(collegeElm,business_depts);
+			
+			function collegeChange(){
+				var selIndex = collegeElm.options[collegeElm.selectedIndex].value;
+				switch(selIndex){
+					case "0":
+						populate(deptElm,business_depts);
+						break;
+					case "1":	
+						populate(deptElm,engineer_depts);
+						break;
+					case "2":	
+						populate(deptElm,information_depts);
+						break;
+					case "3":	
+						populate(deptElm,finance_dapts);
+						break;
+					default:
+						sonsole.log("Not Accept!");
+				}
+			}
+			
+			function populate(selElm,data){
+				var options = "";
+				for (var i = 0; i < data.length; i++){
+					options = options + '<option value="' + i + '">' + data[i] + '</option>';
+				}
+				deptElm.innerHTML = options;
+			}
+		</script>
+	</body>
+</html>
